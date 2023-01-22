@@ -13,7 +13,14 @@ class DOMHelper {
 }
 
 class Component {
-  constructor(hostElementId, insertBefore = false) {}
+  constructor(hostElementId, insertBefore = false) {
+    if (hostElementId) {
+      this.hostElement = document.getElementById(hostElementId);
+    } else {
+      this.hostElement = document.body;
+    }
+    this.insertBefore = insertBefore;
+  }
 
   detach = () => {
     if (this.element) {
@@ -22,6 +29,10 @@ class Component {
   };
 
   attach() {
+    this.hostElement.insertAdjacentElement(
+      this.insertBefore ? "afterbegin" : "beforeend",
+      this.element
+    );
     document.body.append(this.element);
   }
 }
