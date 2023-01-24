@@ -61,8 +61,6 @@ class Tooltip extends Component {
 
     const hostElPosLeft = this.hostElement.offsetLeft;
     const hostElPosTop = this.hostElement.offsetTop;
-    // const hostElPosRight = this.hostElement.offset
-    // const hostElPosBottom = this.hostElement.offset
     const hostElHeight = this.hostElement.clientHeight;
     const parentElScroll = this.hostElement.parentElement.scrollTop;
 
@@ -171,6 +169,12 @@ class App {
     finishedProjectsList.setSwitchHandlerFunction(
       activeProjectsList.addProject.bind(activeProjectsList)
     );
+  }
+  static startAnalytics() {
+    const analyticsScript = document.createElement("script");
+    analyticsScript.src = "assets/scripts/analytics.js";
+    analyticsScript.defer = true;
+    document.head.append(analyticsScript);
   }
 }
 
