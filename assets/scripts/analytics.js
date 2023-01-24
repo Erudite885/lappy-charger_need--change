@@ -1,1 +1,3 @@
-console.log("loading analytics...");
+setInterval(() => {
+  console.log("loading analytics...");
+}, 2000);
