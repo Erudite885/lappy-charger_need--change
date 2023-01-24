@@ -33,7 +33,7 @@ class Component {
       this.insertBefore ? "afterbegin" : "beforeend",
       this.element
     );
-    document.body.append(this.element);
+    // document.body.append(this.element);
   }
 }
 
@@ -53,7 +53,7 @@ class Tooltip extends Component {
     const tooltipElement = document.createElement("div");
     tooltipElement.className = "card";
     tooltipElement.textContent = "dummy!";
-    tooltipElement.addEventListener("click", this.detach);
+    tooltipElement.addEventListener("click", this.closeTooltip);
     this.element = tooltipElement;
   }
 }
@@ -64,8 +64,8 @@ class ProjectItem {
   constructor(id, updateProjectListsFunction, type) {
     this.id = id;
     this.updateProjectListsHandler = updateProjectListsFunction;
-    this.connectSwitchBtn();
-    this.connectMoreInfoBtn(type);
+    this.connectMoreInfoBtn();
+    this.connectSwitchBtn(type);
   }
 
   showMoreInfoHandler() {
